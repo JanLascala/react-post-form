@@ -7,7 +7,7 @@ function App() {
     title: "",
     body: "",
     //public must give true || false a template or public
-    public: ""
+    public: false
   })
 
   //handling the data of the form
@@ -20,6 +20,11 @@ function App() {
     }));
 
   }
+  //for submit btn
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
 
   return (
     <>
@@ -57,7 +62,8 @@ function App() {
           />
           Public Post
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit"
+          onAuxClick={handleSubmit}>Submit</button>
 
       </form>
     </>
