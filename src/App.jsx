@@ -10,8 +10,14 @@ function App() {
     public: ""
   })
 
+  //handling the data of the form
   function handleBookdata(e) {
-    setBookdata(e.target.value)
+
+    const { name, value, type, checked } = e.target;
+    setBookdata(prevData => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
 
   }
 
@@ -33,6 +39,7 @@ function App() {
           value={bookData.title}
           onChange={handleBookdata}
           placeholder="title" />
+
         {/* body  */}
         <input
           type="text"
@@ -40,7 +47,17 @@ function App() {
           value={bookData.body}
           onChange={handleBookdata}
           placeholder="Write here about your book" />
-
+        {/* Public or not Checkbox */}
+        <label>
+          <input
+            type="checkbox"
+            name="public"
+            checked={bookData.public}
+            onChange={handleBookdata}
+          />
+          Public Post
+        </label>
+        <button type="submit">Submit</button>
 
       </form>
     </>
