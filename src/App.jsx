@@ -74,49 +74,70 @@ function App() {
       });
   }
 
+
   return (
     <>
-      <h1 className='text-center p-3'> Your book to add</h1>
-      <form className='text-center' onSubmit={handleSubmit}>
-        {/* author */}
-        <input
-          type="text"
-          name="author"
-          value={bookData.author}
-          onChange={handleBookdata}
-          placeholder="Author's full name"
-          required
-        />
-        {/* title */}
-        <input
-          type="text"
-          name="title"
-          value={bookData.title}
-          onChange={handleBookdata}
-          placeholder="title"
-          required
-        />
+      <h1 className="text-center p-3">Your Book to Add</h1>
+      <form className="container p-4 border rounded" onSubmit={handleSubmit}>
+        <div className="row">
+          {/* Author */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="author" className="form-label">Author's Full Name</label>
+            <input
+              type="text"
+              name="author"
+              className="form-control"
+              value={bookData.author}
+              onChange={handleBookdata}
+              placeholder="Enter author's full name"
+              required
+            />
+          </div>
 
-        {/* body  */}
-        <input
-          type="text"
-          name="body"
-          value={bookData.body}
-          onChange={handleBookdata}
-          placeholder="Write here about your book"
-          required
-        />
-        {/* Public or not Checkbox */}
-        <label>
+          {/* Title */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="title" className="form-label">Title</label>
+            <input
+              type="text"
+              name="title"
+              className="form-control"
+              value={bookData.title}
+              onChange={handleBookdata}
+              placeholder="Enter book title"
+              required
+            />
+          </div>
+        </div>
+
+        {/* Body */}
+        <div className="mb-3">
+          <label htmlFor="body" className="form-label">Description</label>
+          <textarea
+            id="body"
+            name="body"
+            className="form-control"
+            value={bookData.body}
+            onChange={handleBookdata}
+            placeholder="Write about your book"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+
+        {/* Public Checkbox */}
+        <div className="form-check mb-3">
           <input
             type="checkbox"
             name="public"
+            className="form-check-input"
             checked={bookData.public}
             onChange={handleBookdata}
           />
-          Public Post
-        </label>
-        <button type="submit">Submit</button>
+          <label htmlFor="public" className="form-check-label">Public Post</label>
+        </div>
+
+        {/* Submit Button */}
+        <button type="submit" className="btn btn-primary w-100">Submit</button>
       </form>
     </>
   );
