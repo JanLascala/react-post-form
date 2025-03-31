@@ -12,20 +12,18 @@ function App() {
 
   //handling the data of the form
   function handleBookdata(e) {
+    const key = e.target.name
+    const value = e.target.value
 
-    const { name, value, type, checked } = e.target;
-    setBookdata(prevData => ({
-      ...prevData,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    setBookdata({ ...bookData, [key]: value })
 
-  }
-  //for submit btn
+  };
+
+  // for submit btn
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(bookData)
   }
-
-
   return (
     <>
       <h1 className='text-center p-3'> Your book to add</h1>
@@ -63,11 +61,12 @@ function App() {
           Public Post
         </label>
         <button type="submit"
-          onAuxClick={handleSubmit}>Submit</button>
+          onSubmit={handleSubmit}>Submit</button>
 
       </form>
     </>
-  )
+  );
+
 }
 
 export default App
